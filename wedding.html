@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hunt Lyman · Celebrant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --brown:    #574534;
+      --gold:     #bc9a5b;
+      --cream:    #f9f5ef;
+      --offwhite: #fff8ec;
+      --sage:     #677b5b;
+      --dark:     #212121;
+      --mid:      #393939;
+      --soft:     #757575;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: 'Libre Baskerville', serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--cream);
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.9rem 2.5rem;
+      border-bottom: 1px solid rgba(87,69,52,.15);
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; letter-spacing: .12em;
+      color: var(--brown); text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-size: .72rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--dark);
+      text-decoration: none; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--cream);
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+    }
+    .hero-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: .75rem; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--sage);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 300; line-height: 1.1;
+      color: var(--dark);
+    }
+    .hero h1 span { color: var(--brown); }
+    .hero-tagline {
+      font-family: 'Jost', sans-serif;
+      font-size: .78rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-top: 1.5rem;
+    }
+    .cta-btn {
+      display: inline-block; margin-top: 2.5rem;
+      background: var(--sage); color: #fff;
+      font-family: 'Jost', sans-serif;
+      font-size: .72rem; letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: .75rem 2.2rem; border: none;
+      cursor: pointer; text-decoration: none;
+      transition: background .25s;
+    }
+    .cta-btn:hover { background: var(--brown); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      text-align: center; color: var(--gold);
+      font-size: 1.1rem; letter-spacing: .5em;
+      padding: 2rem 0;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 4rem 2rem; max-width: 780px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Jost', sans-serif;
+      font-size: .68rem; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--sage);
+      margin-bottom: 1rem;
+    }
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 300; color: var(--dark);
+      margin-bottom: 1.5rem; line-height: 1.2;
+    }
+    .section-heading span { color: var(--brown); }
+    .section-body {
+      font-size: 1rem; color: var(--mid); line-height: 1.85;
+    }
+    .section-body p + p { margin-top: 1.25rem; }
+
+    /* ── CREDENTIALS BAR ── */
+    .credentials {
+      background: var(--cream);
+      border-top: 1px solid rgba(87,69,52,.12);
+      border-bottom: 1px solid rgba(87,69,52,.12);
+      padding: 1.2rem 2rem; text-align: center;
+    }
+    .credentials p {
+      font-family: 'Jost', sans-serif;
+      font-size: .72rem; letter-spacing: .14em;
+      color: var(--dark); text-transform: uppercase;
+    }
+
+    /* ── PHOTOS ── */
+    .photo-block { max-width: 100%; overflow: hidden; }
+    .photo-block img { width: 100%; height: auto; display: block; }
+    .photo-pair {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      max-width: 900px; margin: 0 auto; padding: 1rem 1rem 3rem;
+    }
+    .photo-pair img { width: 100%; height: 320px; object-fit: cover; display: block; }
+
+    /* ── CEREMONY STEPS ── */
+    .steps { display: grid; gap: 2rem; margin-top: 2rem; }
+    .step { border-left: 2px solid var(--gold); padding-left: 1.5rem; }
+    .step-num {
+      font-family: 'Jost', sans-serif; font-size: .68rem;
+      letter-spacing: .18em; color: var(--gold); text-transform: uppercase;
+    }
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; color: var(--dark); margin: .3rem 0 .5rem;
+    }
+    .step-body { font-size: .95rem; color: var(--mid); }
+
+    /* ── SAMPLE WORDS ── */
+    .sample-card {
+      background: var(--offwhite);
+      border: 1px solid rgba(188,154,91,.25);
+      padding: 2rem 2rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .sample-label {
+      font-family: 'Jost', sans-serif; font-size: .65rem;
+      letter-spacing: .2em; color: var(--gold); text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .sample-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-style: italic;
+      color: var(--mid); line-height: 1.8;
+    }
+
+    /* ── RESOURCE LIST ── */
+    .resource-group { margin-bottom: 2rem; }
+    .resource-group-title {
+      font-family: 'Jost', sans-serif; font-size: .7rem;
+      letter-spacing: .18em; color: var(--dark); text-transform: uppercase;
+      border-bottom: 1px solid rgba(87,69,52,.15); padding-bottom: .5rem;
+      margin-bottom: 1rem;
+    }
+    .resource-item { margin-bottom: 1.1rem; }
+    .resource-item a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; color: var(--brown); text-decoration: none;
+    }
+    .resource-item a:hover { color: var(--gold); }
+    .resource-desc { font-size: .88rem; color: var(--soft); margin-top: .15rem; }
+
+    /* ── LOGISTICS TABLE ── */
+    .info-box {
+      background: var(--offwhite);
+      border: 1px solid rgba(188,154,91,.2);
+      padding: 2rem; margin-top: 2rem;
+    }
+    .info-box-title {
+      font-family: 'Jost', sans-serif; font-size: .68rem;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--dark); margin-bottom: 1.25rem;
+    }
+    .info-row { display: flex; gap: 1rem; margin-bottom: .65rem; font-size: .95rem; }
+    .info-key { color: var(--brown); font-weight: 700; min-width: 110px; }
+    .info-val { color: var(--mid); }
+    .info-val a { color: var(--sage); text-decoration: none; }
+    .info-val a:hover { color: var(--gold); }
+    .info-note { font-size: .85rem; color: var(--soft); margin-top: 1rem; }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--dark); color: #fff;
+      text-align: center; padding: 5rem 2rem;
+    }
+    .contact-section .section-label { color: rgba(255,255,255,.5); }
+    .contact-section .section-heading { color: #fff; }
+    .contact-section .section-heading span { color: var(--gold); }
+    .contact-lead {
+      max-width: 560px; margin: 0 auto 2.5rem;
+      font-size: 1rem; color: rgba(255,255,255,.75); line-height: 1.85;
+    }
+    .email-display {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; color: var(--gold);
+      text-decoration: none; letter-spacing: .03em;
+      border-bottom: 1px solid rgba(188,154,91,.4);
+      padding-bottom: .25rem;
+      transition: color .2s, border-color .2s;
+    }
+    .email-display:hover { color: #fff; border-color: #fff; }
+    .closing-quote {
+      max-width: 520px; margin: 3.5rem auto 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-style: italic;
+      color: rgba(255,255,255,.6); line-height: 1.8;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      text-align: center; padding: 1.5rem;
+      font-family: 'Jost', sans-serif;
+      font-size: .68rem; letter-spacing: .14em;
+      color: rgba(255,255,255,.35); text-transform: uppercase;
+    }
+
+    /* ── FULL-WIDTH BG SECTIONS ── */
+    .full-bg { background: var(--offwhite); }
+    .full-bg-sage { background: #eef1eb; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-brand">Hunt Lyman · Celebrant</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#ceremony">The Ceremony</a></li>
+      <li><a href="#sample">Sample Words</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#logistics">Logistics</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-sub">Civil Celebrant · Loudoun County, Virginia</p>
+    <h1>Your Wedding,<br><span>Your Way</span></h1>
+    <p class="hero-tagline">Personalized Ceremonies · Northern Virginia</p>
+    <a class="cta-btn" href="#contact">Begin the Conversation</a>
+  </div>
+
+  <div style="max-width:780px;margin:0 auto;padding:2rem 2rem 0;">
+    <p class="section-body" style="font-size:1.1rem;color:var(--mid);text-align:center;line-height:1.9;">
+      A wedding ceremony should be as unique as the love it celebrates. I'm Hunt Lyman — a licensed civil celebrant in the Commonwealth of Virginia — and I'd be honored to help you craft a ceremony that is wholly and beautifully yours.
+    </p>
+  </div>
+
+  <div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- PHOTOS -->
+  <div class="photo-pair">
+    <img src="photo1.jpg" alt="Hunt Lyman, Celebrant"/>
+    <img src="photo2.jpg" alt="Wedding ceremony"/>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="full-bg" id="about">
+    <section>
+      <p class="section-label">About Hunt</p>
+      <h2 class="section-heading">A Life Built Around<br><span>Words &amp; People</span></h2>
+      <div class="section-body">
+        <p>As a licensed civil celebrant in Loudoun County, Virginia, I am authorized by the Commonwealth to solemnize marriages. But a ceremony is so much more than a legal formality — it is the most public and personal moment in a couple's life together, and I take that privilege seriously.</p>
+        <p>With more than four decades of experience as an educator, I have spent my career studying language, literature, and the way words shape our understanding of the world. I know that the right words at the right moment can be transformative. I bring that same care and attentiveness to every ceremony I officiate.</p>
+        <p>I am a lifelong resident of Middleburg, Virginia — the heart of horse country in the Blue Ridge foothills — and I understand the beauty and character of this region. Whether your ceremony is in a historic Loudoun barn, a vineyard, a garden, or your own backyard, I am at home here.</p>
+        <p>My approach is collaborative. Before your ceremony, we will talk — about how you met, what you love about each other, what words and readings speak to you, and what kind of ceremony feels most like you. Then I will help craft something memorable.</p>
+      </div>
+    </section>
+    <div class="credentials">
+      <p>Ph.D. in Education, University of Virginia &nbsp;·&nbsp; 41 years of teaching and writing experience &nbsp;·&nbsp; Licensed Civil Celebrant, Commonwealth of Virginia</p>
+    </div>
+  </div>
+
+  <div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- THE CEREMONY -->
+  <div id="ceremony">
+    <section>
+      <p class="section-label">How It Works</p>
+      <h2 class="section-heading">The Shape of a <span>Ceremony</span></h2>
+      <div class="section-body">
+        <p>Every ceremony I officiate is built from scratch, in close conversation with you. There is no template, no boilerplate, no ceremony that sounds like it was ordered from a catalogue.</p>
+        <p>We begin by talking — about your story, your values, and the tone you want to strike. From there, I draft a ceremony script and share it with you for review and revision. Everything is negotiable: the length, the formality, the humor, the tears.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <p class="step-num">Step One</p>
+          <h3 class="step-title">The Conversation</h3>
+          <p class="step-body">We meet (in person or by video) to talk through your vision, your story, and any special elements you'd like to include — vows, readings, rituals, music cues.</p>
+        </div>
+        <div class="step">
+          <p class="step-num">Step Two</p>
+          <h3 class="step-title">The Draft</h3>
+          <p class="step-body">I write a custom ceremony script and send it to you for feedback. We revise together until every word feels right.</p>
+        </div>
+        <div class="step">
+          <p class="step-num">Step Three</p>
+          <h3 class="step-title">The Rehearsal</h3>
+          <p class="step-body">I attend your rehearsal to walk through timing, blocking, and any last-minute questions — so your wedding day feels effortless.</p>
+        </div>
+        <div class="step">
+          <p class="step-num">Step Four</p>
+          <h3 class="step-title">The Ceremony</h3>
+          <p class="step-body">I arrive early, prepared, and ready. I guide your ceremony with warmth and attention, and handle all legal paperwork with the Loudoun County courts.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- SAMPLE WORDS -->
+  <div class="full-bg" id="sample">
+    <section>
+      <p class="section-label">Sample Words</p>
+      <h2 class="section-heading">A Taste of What's <span>Possible</span></h2>
+      <div class="section-body">
+        <p>These are excerpts from ceremonies I have written. Every ceremony is different — these give a sense of tone and care, not a script to be repeated.</p>
+      </div>
+      <div style="margin-top:2rem;">
+        <div class="sample-card">
+          <p class="sample-label">Opening — Secular, Intimate</p>
+          <p class="sample-text">"We are gathered here — not to witness the beginning of something, but to celebrate the continuation of it. These two have already chosen each other, every day, in small and enormous ways. Today, they say so out loud."</p>
+        </div>
+        <div class="sample-card">
+          <p class="sample-label">Vow Prompt — Personal</p>
+          <p class="sample-text">"I promise to be your home — a place you can return to, rest in, and leave from, knowing you are always welcome back."</p>
+        </div>
+        <div class="sample-card">
+          <p class="sample-label">Closing — Universal</p>
+          <p class="sample-text">"May the love in your hearts give you joy. May the greatness of life bring you peace."</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- RESOURCES -->
+  <div id="resources">
+    <section>
+      <p class="section-label">Resources</p>
+      <h2 class="section-heading">Readings, Poems &amp; <span>Music</span></h2>
+      <div class="section-body"><p>A curated collection to help you find the right words and music for your ceremony.</p></div>
+
+      <div style="margin-top:2rem;">
+        <div class="resource-group">
+          <p class="resource-group-title">Poetry &amp; Literary Readings</p>
+          <div class="resource-item">
+            <a href="https://www.poetryfoundation.org/articles/68621/wedding-poems" target="_blank">Poetry Foundation: Wedding Poems Collection</a>
+            <p class="resource-desc">A curated anthology of classic and contemporary poems perfect for ceremonies.</p>
+          </div>
+          <div class="resource-item">
+            <a href="https://www.poetryfoundation.org/poems/43742/sonnets-from-the-portuguese-43-how-do-i-love-thee-let-me-count-the-ways" target="_blank">Sonnet 43 — Elizabeth Barrett Browning</a>
+            <p class="resource-desc">"How do I love thee? Let me count the ways…" Romantic and enduring.</p>
+          </div>
+          <div class="resource-item">
+            <a href="https://www.bridalguide.com/planning/the-details/ceremony/wedding-ceremony-readings" target="_blank">Bridal Guide: 30 Ceremony Readings from Literature</a>
+            <p class="resource-desc">A rich collection ranging from Neruda to Winnie the Pooh.</p>
+          </div>
+          <div class="resource-item">
+            <a href="https://spokenheartceremonies.com/2020/10/23/readings-for-your-wedding-ceremony-off-the-beaten-path-selections/" target="_blank">Off the Beaten Path: Unusual Ceremony Readings</a>
+            <p class="resource-desc">Thoughtful, less-familiar selections including Emily Dickinson and Erich Fromm.</p>
+          </div>
+          <div class="resource-item">
+            <a href="https://www.east-ayrshire.gov.uk/Resources/PDF/C/Ceremony-poems-and-readings.pdf" target="_blank">A Collection of Ceremony Poems &amp; Readings (PDF)</a>
+            <p class="resource-desc">A downloadable booklet with dozens of options from traditional to contemporary.</p>
+          </div>
+        </div>
+
+        <div class="resource-group">
+          <p class="resource-group-title">Ceremony Music</p>
+          <div class="resource-item">
+            <a href="https://www.bestinbrass.com/post/top-20-traditional-wedding-songs" target="_blank">Top 20 Classical Wedding Ceremony Songs</a>
+            <p class="resource-desc">From Canon in D to the Bridal Chorus — the time-honored classics explained.</p>
+          </div>
+          <div class="resource-item">
+            <a href="https://www.theknot.com/content/ceremony-recessional-selections" target="_blank">The Knot: Recessional Song Ideas</a>
+            <p class="resource-desc">Hundreds of ideas from traditional Mendelssohn to modern pop for your exit.</p>
+          </div>
+          <div class="resource-item">
+            <a href="https://ceremonyofficiants.com/wedding-ceremony-songs/" target="_blank">Ceremony Officiants: Song Guide</a>
+            <p class="resource-desc">Classical and modern suggestions for processionals and recessionals.</p>
+          </div>
+          <div class="resource-item">
+            <a href="https://www.minted.com/wedding-ideas/wedding-songs/recessional" target="_blank">Minted: 60 Recessional Song Ideas</a>
+            <p class="resource-desc">Classical, contemporary, and everything in between — organized by mood.</p>
+          </div>
+        </div>
+
+        <div class="resource-group">
+          <p class="resource-group-title">Biblical Readings</p>
+          <div class="resource-item">
+            <a href="https://www.biblegateway.com/passage/?search=Ruth+1%3A16-17&version=NIV" target="_blank">Ruth 1:16–17 — "Where you go, I will go"</a>
+            <p class="resource-desc">One of the most beloved passages for wedding ceremonies across traditions.</p>
+          </div>
+          <div class="resource-item">
+            <a href="https://www.biblegateway.com/passage/?search=1+Corinthians+13%3A4-8&version=NIV" target="_blank">1 Corinthians 13:4–8 — "Love is patient, love is kind"</a>
+            <p class="resource-desc">The most quoted passage at weddings worldwide. Timeless for good reason.</p>
+          </div>
+          <div class="resource-item">
+            <a href="https://www.biblegateway.com/passage/?search=Song+of+Solomon+3%3A4&version=NIV" target="_blank">Song of Solomon — Selections</a>
+            <p class="resource-desc">Lush, romantic poetry from one of the Bible's most beautiful books.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- LOGISTICS -->
+  <div class="full-bg" id="logistics">
+    <section>
+      <p class="section-label">Practical Matters</p>
+      <h2 class="section-heading">Logistics &amp; the <span>Marriage License</span></h2>
+      <div class="section-body">
+        <p>The ceremony we create together can be as brief or as elaborate as you like. But one thing is non-negotiable: a valid Virginia marriage license, which I must have in hand before we begin. Fortunately, the process in Loudoun County is simple and the office is welcoming.</p>
+        <p>Your license is valid for 60 days from the date of issue, and there is no waiting period — you can receive it and get married the same day if you choose. After the ceremony, I am responsible for completing both copies and returning them to the Clerk of the Circuit Court within five days.</p>
+        <p>Beyond the license, there are no blood tests, no residency requirements, and no proof of divorce required. You simply need a government-issued photo ID and the fee (currently $35). Both parties must appear in person or via virtual appointment.</p>
+        <p>Please don't hesitate to contact me with any questions about the process — I am happy to walk you through it.</p>
+      </div>
+      <div class="info-box">
+        <p class="info-box-title">Quick Reference: Loudoun County</p>
+        <div class="info-row"><span class="info-key">Where:</span><span class="info-val">Loudoun County Clerk of the Circuit Court, 18 E Market St, Leesburg, VA</span></div>
+        <div class="info-row"><span class="info-key">Hours:</span><span class="info-val">Mon–Fri, 8 a.m.–4 p.m. (arrive by 3:30)</span></div>
+        <div class="info-row"><span class="info-key">Fee:</span><span class="info-val">$35 (cash or credit card)</span></div>
+        <div class="info-row"><span class="info-key">Valid for:</span><span class="info-val">60 days anywhere in Virginia</span></div>
+        <div class="info-row"><span class="info-key">Both parties:</span><span class="info-val">Must appear in person or via virtual appointment</span></div>
+        <div class="info-row"><span class="info-key">Apply online:</span><span class="info-val"><a href="https://www.loudoun.gov/1162/Marriage-Licenses" target="_blank">loudoun.gov/1162/Marriage-Licenses</a></span></div>
+        <div class="info-row"><span class="info-key">Phone:</span><span class="info-val">703-771-5647</span></div>
+        <p class="info-note">A Virginia license is valid for ceremonies anywhere in the Commonwealth, not just Loudoun County.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-section" id="contact">
+    <p class="section-label">Let's Talk</p>
+    <h2 class="section-heading">Every Ceremony Begins with<br><span>a Conversation</span></h2>
+    <p class="contact-lead">I'd love to hear about you, your partner, and your vision for your wedding day. Reach out and we'll find a time to talk — no obligation, no pressure, just a conversation about what matters most.</p>
+    <a class="email-display" href="mailto:huntingtonlyman@gmail.com">huntingtonlyman@gmail.com</a>
+    <p class="closing-quote">"May the love in your hearts give you joy. May the greatness of life bring you peace."</p>
+  </div>
+
+  <footer>
+    &copy; 2025 Hunt Lyman · Civil Celebrant · Loudoun County, Virginia
+  </footer>
+
+</body>
+</html>
