@@ -201,6 +201,32 @@
     .info-val a:hover { color: var(--gold); }
     .info-note { font-size: .85rem; color: var(--soft); margin-top: 1rem; }
 
+    /* ── FEES ── */
+    .fee-card {
+      background: var(--offwhite);
+      border: 1px solid rgba(188,154,91,.25);
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.25rem;
+    }
+    .fee-header {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: .75rem;
+    }
+    .fee-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; color: var(--dark);
+    }
+    .fee-amount {
+      font-family: 'Jost', sans-serif;
+      font-size: .85rem; letter-spacing: .08em;
+      color: var(--gold); white-space: nowrap; margin-left: 1rem;
+    }
+    .fee-body { font-size: .95rem; color: var(--mid); line-height: 1.8; }
+    .fee-note {
+      font-size: .85rem; color: var(--soft);
+      font-style: italic; margin-top: .6rem;
+    }
+
     /* ── CONTACT ── */
     .contact-section {
       background: var(--dark); color: #fff;
@@ -255,6 +281,7 @@
       <li><a href="#sample">Sample Words</a></li>
       <li><a href="#resources">Resources</a></li>
       <li><a href="#logistics">Logistics</a></li>
+      <li><a href="#fees">Fees</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -277,8 +304,9 @@
 
   <!-- PHOTOS -->
   <div class="photo-pair">
+    <img src="rings.jpg" alt="Wedding rings on two hands"/>
     <img src="Hunt.jpg" alt="Hunt Lyman, Celebrant"/>
-    <img src="Hunt2.jpg" alt="Wedding ceremony"/>
+    <img src="Hunt2.jpg" alt="Wedding ceremony" style="grid-column: 1 / -1; height: 360px;"/>
   </div>
 
   <!-- ABOUT -->
@@ -461,11 +489,69 @@
     </section>
   </div>
 
+  <div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- FEES -->
+  <div id="fees">
+    <section>
+      <p class="section-label">Investment</p>
+      <h2 class="section-heading">Fees &amp; <span>Services</span></h2>
+      <div class="section-body">
+        <p>I believe every couple deserves a ceremony that honors their story — and I am committed to making my services accessible while reflecting the genuine time and care I invest in each one. Below is a summary of my fees. I am always happy to discuss your specific situation.</p>
+      </div>
+
+      <div style="margin-top:2rem;">
+
+        <div class="fee-card">
+          <div class="fee-header">
+            <h3 class="fee-title">Officiant Fee</h3>
+            <span class="fee-amount">$75</span>
+          </div>
+          <p class="fee-body">My base fee covers officiating a small, informal wedding ceremony and completing all required legal filings with Loudoun County. This is a good fit for intimate ceremonies using a pre-written script — whether one of my samples or a script of your own choosing.</p>
+        </div>
+
+        <div class="fee-card">
+          <div class="fee-header">
+            <h3 class="fee-title">Ceremony Writing</h3>
+            <span class="fee-amount">$50 – $500</span>
+          </div>
+          <p class="fee-body">If you'd like help shaping or refining your ceremony, I offer two levels of writing assistance. For lighter touch-ups — mapping out ceremony segments or polishing the language of an existing script — the fee is $50. For couples who want a truly original ceremony crafted from scratch through a collaborative process, fees range from $250 to $500, depending on the scope of work we determine together during our initial consultation.</p>
+        </div>
+
+        <div class="fee-card">
+          <div class="fee-header">
+            <h3 class="fee-title">Rehearsal</h3>
+            <span class="fee-amount">$75</span>
+          </div>
+          <p class="fee-body">For weddings with more than two attendants, I strongly recommend a rehearsal the day before. My rehearsal fee is $75 and covers a session of approximately 30 to 60 minutes, depending on the complexity of your ceremony and the number of participants. This includes establishing the procession order, working through blocking for the wedding party, and staging any special elements such as a unity candle or a remembrance of loved ones. If you have a wedding coordinator, they are welcome to lead the rehearsal — I am equally happy to attend in a supporting role.</p>
+        </div>
+
+        <div class="fee-card">
+          <div class="fee-header">
+            <h3 class="fee-title">Travel</h3>
+            <span class="fee-amount">$25 – $50</span>
+          </div>
+          <p class="fee-body">A travel fee applies for ceremonies held outside Middleburg, ranging from $25 to $50 depending on distance and time of day.</p>
+        </div>
+
+        <div class="fee-card">
+          <div class="fee-header">
+            <h3 class="fee-title">Witness &amp; Legal Filing Only</h3>
+            <span class="fee-amount">$75</span>
+          </div>
+          <p class="fee-body">If you have chosen someone meaningful to you — a family member or close friend — to perform your ceremony, that is entirely legal in Virginia, provided a licensed civil celebrant is present to witness and certify the marriage. I have done this many times, and I am always glad to serve in this capacity. My fee is the same as for a ceremony I perform myself: $75.</p>
+          <p class="fee-note">Please note that travel and any applicable late-start fees also apply when I attend as a witness.</p>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
   <!-- CONTACT -->
   <div class="contact-section" id="contact">
     <p class="section-label">Let's Talk</p>
     <h2 class="section-heading">Every Ceremony Begins with<br><span>a Conversation</span></h2>
-    <p class="contact-lead">I'd love to hear about you, your partner, and your vision for your wedding day. Reach out and we'll find a time to talk — no obligation, no pressure, just a conversation about what matters most.</p>
+    <p class="contact-lead">I'd love to hear about you, your partner, and your vision for your wedding day. Reach out and we'll find a time to talk — no pressure, just a conversation about what matters most to you and what it would take to make it happen.</p>
     <a class="email-display" href="mailto:huntingtonlyman@gmail.com">huntingtonlyman@gmail.com</a>
     <p class="closing-quote">"May the love in your hearts give you joy. May the greatness of life bring you peace."</p>
   </div>
